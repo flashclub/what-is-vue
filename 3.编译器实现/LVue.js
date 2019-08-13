@@ -14,6 +14,10 @@ class LVue {
     // this.$data.info.age
 
     new Compile(options.el,this)
+    // created执行
+    if (options.created) {
+      options.created.call(this)
+    }
   }
   observe(value) {
     //如果数据符合要求，则将数据全部进行响应化处理

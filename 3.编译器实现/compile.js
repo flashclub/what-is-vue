@@ -10,27 +10,36 @@ class Compile {
       // 转换内部内容为片段
       this.$fragment = this.node2Fragment(this.$el);
       // 执行编译
-
+      console.dir(this.$fragment);
+      
       this.compile(this.$fragment);
       // 将编译完的html结果添加至$el
-      // this.$el.appendChild(this.$fragment);
+      this.$el.appendChild(this.$fragment);
     }
   }
   compile(el) {
     const childNode = el.childNodes;
     if (childNode.length <= 0) {
-      return
+      return;
     }
     Array.from(childNode).forEach(node => {
       if (this.isElement(node)) {
         // 元素
-        console.log("检测到是元素",node,node.nodeName);
+        console.log("检测到是元素", node, node.nodeName);
       } else if (this.isInterpolation(node)) {
         // 文本
-        console.log("检测到是文本",node,node.textContent);
+        console.log("检测到是文本", node, node.textContent);
+        // node.textContent = '123'
+        this.compileText(node);
       }
       this.compile(node);
     });
+    console.dir(el);
+    
+  }
+  compileText(node) {
+    console.log(RegExp.$1, this.$vm.$data[RegExp.$1]);
+    node.textContent = this.$vm.$data[RegExp.$1];
   }
   isElement(node) {
     return node.nodeType === 1;

@@ -11,6 +11,7 @@
     <H1>{{header}}</H1>
     <p>{{content}}</p>
     <div>{{footer}}</div>
+    <input type="text" I-model='inputValue'>
   </div>
   <script src="./compile.js"></script>
   <script src='./LVue.js'></script>
@@ -19,11 +20,18 @@
       el:'#app',
       data:{
         name:'',
+        header:'headers',
+        content:'contents',
+        footer:'footers',
+        inputValue:'',
         info:{
           age:30,
           hobby:'football'
         }
-      }
+      },
+      created() {
+        this.header = 'header2'
+      },
     })
     app.$data.name = 'laughing'
     app.$data.info.age = 40
