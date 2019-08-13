@@ -9,7 +9,7 @@ vue源码学习路线
 
   初始化内容：缓存入参，观察函数`observe(value)`和数据响应化`defineReative(obj,key,value)`
 
-### 2.实现一个vue
+### 2.发布订阅模式
 
 - 依赖收集
 
@@ -18,3 +18,6 @@ vue源码学习路线
   `watcher`作为观察者：在数据响应化`getter`时将dep和watcher做关联，使得当dep检测到数据更新时可以触发watcher中的方法，由于作用域是独立的，那么每次`getter`触发时都有一个新的watcher与dep
 
   
+
+### 3.编译器实现
+
