@@ -1,4 +1,5 @@
 // new LVue({data:...})   //数据格式：入参
+
 class LVue {
   constructor(options) {
     this.$options = options;
@@ -6,10 +7,13 @@ class LVue {
     this.observe(this.$data);
 
     //  模拟watcher的创建
-    new Watcher()
-    this.$data.name
-    new Watcher()
-    this.$data.info.age
+
+    // new Watcher()
+    // this.$data.name
+    // new Watcher()
+    // this.$data.info.age
+
+    new Compile(options.el,this)
   }
   observe(value) {
     //如果数据符合要求，则将数据全部进行响应化处理
